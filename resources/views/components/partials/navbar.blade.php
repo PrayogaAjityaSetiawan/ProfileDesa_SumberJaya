@@ -1,0 +1,292 @@
+<nav 
+    x-data="{
+        isScrolled: false,
+        lastScrollY: 0,
+        showNavbar: true,
+        mobileMenuOpen: false,
+        
+        init() {
+            this.handleScroll();
+            window.addEventListener('scroll', () => this.handleScroll());
+        },
+        
+        handleScroll() {
+            const currentScrollY = window.pageYOffset;
+            
+            // ubah tampilan navbar ketika discroll
+            if (currentScrollY > 50) {
+                this.isScrolled = true;
+            } else {
+                this.isScrolled = false;
+            }
+            
+            // hidden navbar ketika discroll ke bawah dan munculin navbar ketika scroll atas
+            if (currentScrollY > 100) {
+                if (currentScrollY > this.lastScrollY && currentScrollY > 300) {
+                    this.showNavbar = false;
+                } else {
+                    this.showNavbar = true;
+                }
+            } else {
+                this.showNavbar = true;
+            }
+            
+            this.lastScrollY = currentScrollY;
+        }
+    }"
+    id="navbar" 
+    class="fixed top-0 left-0 right-0 z-50 p-2 transition-all duration-500 ease-in-out"
+    x-cloak
+    :class="{
+        'transform -translate-y-full': !showNavbar,
+        'transform translate-y-0': showNavbar,
+        'bg-white/95 backdrop-blur-lg border-[1px] border-gray-200': isScrolled,
+        ' backdrop-blur-md border-none': !isScrolled
+    }"
+>
+    <div class="md:w-[80%] 2xl:w-[70%] mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <div class="transition-transform duration-300 hover:scale-105"> 
+            @if (isset($setting->logo) && !empty($setting->logo))             
+                <img 
+                    class="w-16 md:w-20 transition-all duration-300" 
+                    src="{{ asset('storage/' . $setting->logo) }}" 
+                    alt="Logo" 
+                />
+            @endif      
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center  text-md font-medium">
+            <a href="{{ route('homepage') }}" 
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('homepage') ? 'text-blue-400 font-semibold' : '' }}"
+               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               wire:navigate>
+                Beranda
+                @if(Route::is('homepage'))
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                @endif
+            </a>
+
+            <!-- Dropdown Menu -->
+            <div x-data="{ open: false }" class="relative inline-block text-left">
+                <button 
+                    @click="open = !open" 
+                    class="flex items-center justify-between px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
+                    :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+                >
+                    Profil Desa
+                    <svg 
+                        :class="{ 'rotate-180': open }" 
+                        class="w-4 h-4 ml-2 transition-transform duration-200" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 20 20" 
+                        fill="currentColor"
+                    >
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+
+                <div 
+                    x-show="open" 
+                    @click.outside="open = false"
+                    x-cloak                   
+                    class="absolute top-full left-0 text-sm w-52 bg-white/95 backdrop-blur-lg shadow-xl rounded-lg mt-2 z-50 overflow-hidden border border-gray-200/50"
+                >
+                    <a href="{{ route('sejarah') }}" 
+                       class="block px-4 py-3 hover:bg-gray-50 hover:scale-105 transition-all duration-300 {{ Route::is('sejarah') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700' }}" 
+                       wire:navigate>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Sejarah
+                        </div>
+                    </a>
+
+                    <a href="{{ route('struktur-desa') }}" 
+                       class="block px-4 py-3 hover:bg-gray-50 hover:scale-105 transition-all duration-300  {{ Route::is('struktur-desa') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700' }}" 
+                       wire:navigate>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            Struktur Desa
+                        </div>
+                    </a>
+
+                    <a href="#" 
+                       class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Infografis
+                        </div>
+                    </a>
+                    <a href="#" 
+                       class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Sarana & Prasarana
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="{{ route('produk') }}" 
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('produk') ? 'text-blue-400 font-semibold' : '' }}"
+               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               wire:navigate>
+                UMKM
+                @if(Route::is('produk'))
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                @endif
+            </a>
+
+            <a target="_blank" href="https://serambiujungkulon.com/" 
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('paket-wisata') ? 'text-blue-400 font-semibold' : '' }}"
+               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               >
+                Pariwisata
+            </a>
+
+            <a href="{{ route('artikel') }}" 
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('artikel') ? 'text-blue-400 font-semibold' : '' }}"
+               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               wire:navigate>
+                Artikel
+                @if(Route::is('artikel'))
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                @endif
+            </a>
+
+            <a href="{{ route('artikel') }}" 
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('artikel') ? 'text-blue-400 font-semibold' : '' }}"
+               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               wire:navigate>
+                Gallery
+                @if(Route::is('artikel'))
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                @endif
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button 
+    @click="mobileMenuOpen = !mobileMenuOpen" 
+    x-cloak           
+    class="md:hidden text-2xl p-2 rounded-lg transition-all duration-300 hover:bg-white/10"
+    :class="isScrolled ? 'text-gray-800' : 'text-white'"
+>
+    <svg 
+        x-show="!mobileMenuOpen"
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        class="transition-transform duration-300"
+    >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M4 6h16" />
+        <path d="M7 12h13" />
+        <path d="M10 18h10" />
+    </svg>
+    <svg 
+        x-show="mobileMenuOpen"
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        class="transition-transform duration-300"
+    >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M18 6L6 18" />
+        <path d="M6 6l12 12" />
+    </svg>
+</button>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div 
+        x-show="mobileMenuOpen"
+        {{-- @click.away="mobileMenuOpen = false" --}}
+        x-cloak
+        class="w-full h-full md:hidden mt-2 bg-white/95 backdrop-blur-lg rounded-lg shadow-xl border border-gray-200/50 overflow-hidden"
+    >
+        <div class="py-4 space-y-2">
+            <a href="{{ route('homepage') }}" 
+               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('homepage') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+               wire:navigate 
+               @click="mobileMenuOpen = false">
+                Beranda
+            </a>
+            
+            <div class="px-6 py-2">
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Profil Desa</div>
+                <div class="mt-2 ml-4 space-y-2">
+                    <a href="{{ route('sejarah') }}" 
+                       class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 {{ Route::is('sejarah') ? 'text-blue-600 font-semibold' : '' }}" 
+                       wire:navigate 
+                       @click="mobileMenuOpen = false">
+                        Sejarah
+                    </a>
+                    <a href="{{ route('struktur-desa') }}" 
+                       class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 {{ Route::is('struktur-desa') ? 'text-blue-600 font-semibold' : '' }}" 
+                       wire:navigate 
+                       @click="mobileMenuOpen = false">
+                        Struktur Desa
+                    </a>
+                    <a href="#" 
+                       class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200" 
+                       @click="mobileMenuOpen = false">
+                        Infografis
+                    </a>
+                    <a href="hhhhggd" 
+                       class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200" 
+                       @click="mobileMenuOpen = false">
+                        Sarana dan Prasarana
+                    </a>
+                </div>
+            </div>
+            
+            <a href="{{ route('produk') }}" 
+               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('produk') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+               wire:navigate 
+               @click="mobileMenuOpen = false">
+                Produk
+            </a>
+            <a href="{{ route('paket-wisata') }}" 
+               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('paket-wisata') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+               wire:navigate 
+               @click="mobileMenuOpen = false">
+                Paket Wisata
+            </a>
+            <a href="{{ route('artikel') }}" 
+               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('artikel') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+               wire:navigate 
+               @click="mobileMenuOpen = false">
+                Artikel
+            </a>
+            <a href="{{ route('artikel') }}" 
+               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('kontak') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+               wire:navigate 
+               @click="mobileMenuOpen = false">
+                Kontak
+            </a>
+        </div>
+    </div>
+</nav>
