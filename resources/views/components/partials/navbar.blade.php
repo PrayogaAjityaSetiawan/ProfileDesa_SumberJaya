@@ -37,34 +37,41 @@
     id="navbar" 
     class="fixed top-0 left-0 right-0 z-50 p-2 transition-all duration-500 ease-in-out"
     x-cloak
+    @if (Route::is('homepage'))
+        :class="{ 'bg-[#054573] backdrop-blur-lg text-white': isScrolled }"
+    @endif
     :class="{
         'transform -translate-y-full': !showNavbar,
         'transform translate-y-0': showNavbar,
-        'bg-white/95 backdrop-blur-lg border-[1px] border-gray-200': isScrolled,
-        ' backdrop-blur-md border-none': !isScrolled
+        'bg-[#054573] backdrop-blur-lg text-white': isScrolled,
+        'bg-[#054573] backdrop-blur-md text-white': !isScrolled
     }"
 >
     <div class="md:w-[80%] 2xl:w-[70%] mx-auto flex items-center justify-between">
         <!-- Logo -->
-        <div class="transition-transform duration-300 hover:scale-105"> 
+        <div class="flex items-center space-x-2 transition-transform duration-300 hover:scale-105"> 
             @if (isset($setting->logo) && !empty($setting->logo))             
                 <img 
-                    class="w-16 md:w-20 transition-all duration-300" 
+                    class="w-16 transition-all duration-300" 
                     src="{{ asset('storage/' . $setting->logo) }}" 
                     alt="Logo" 
                 />
-            @endif      
+            @endif  
+            <div>
+                <h1 class="text-lg font-semibold text-white">{{ $setting->judul }}</h1>
+                <p class="text-sm font-semibold text-white">Kabupaten Pandeglang</p>
+            </div>    
         </div>
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center  text-md font-medium">
             <a href="{{ route('homepage') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('homepage') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 Beranda
                 @if(Route::is('homepage'))
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-purple-400"></span>
                 @endif
             </a>
 
@@ -73,7 +80,7 @@
                 <button 
                     @click="open = !open" 
                     class="flex items-center justify-between px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
-                    :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+                    :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
                 >
                     Profil Desa
                     <svg 
@@ -115,7 +122,7 @@
                         </div>
                     </a>
 
-                    <a href="#" 
+                    <a href="{{ route('infografis') }}" 
                        class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,12 +131,20 @@
                             Infografis
                         </div>
                     </a>
-                    <a href="#" 
+                    <a href="{{ route('keuangan') }}" 
                        class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                             </svg>
+                            Keuangan
+                        </div>
+                    </a>
+                    <a href="{{ route('sarana-prasarana') }}" 
+                       wire:navigate
+                       class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-building"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" /><path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" /><path d="M14 16l1 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /></svg>
                             Sarana & Prasarana
                         </div>
                     </a>
@@ -138,7 +153,7 @@
 
             <a href="{{ route('produk') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('produk') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 UMKM
                 @if(Route::is('produk'))
@@ -147,15 +162,15 @@
             </a>
 
             <a target="_blank" href="https://serambiujungkulon.com/" 
-               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('paket-wisata') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105"
+               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
                >
                 Pariwisata
             </a>
 
             <a href="{{ route('artikel') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('artikel') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 Artikel
                 @if(Route::is('artikel'))
@@ -163,12 +178,12 @@
                 @endif
             </a>
 
-            <a href="{{ route('artikel') }}" 
-               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('artikel') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-gray-200'"
+            <a href="{{ route('galeri') }}" 
+               class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('galeri') ? 'text-blue-400 font-semibold' : '' }}"
+               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
                wire:navigate>
-                Gallery
-                @if(Route::is('artikel'))
+                Galeri
+                @if(Route::is('galeri'))
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
                 @endif
             </a>
@@ -250,12 +265,18 @@
                        @click="mobileMenuOpen = false">
                         Struktur Desa
                     </a>
-                    <a href="#" 
+                    <a href="{{ route('infografis') }}" 
                        class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200" 
                        @click="mobileMenuOpen = false">
                         Infografis
                     </a>
-                    <a href="hhhhggd" 
+                    <a href="{{ route('keuangan') }}" 
+                       class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200" 
+                       @click="mobileMenuOpen = false">
+                        Keuangan
+                    </a>
+                    <a href="{{ route('sarana-prasarana') }}"
+                        wire:navigate
                        class="block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200" 
                        @click="mobileMenuOpen = false">
                         Sarana dan Prasarana
@@ -269,11 +290,10 @@
                @click="mobileMenuOpen = false">
                 Produk
             </a>
-            <a href="{{ route('paket-wisata') }}" 
-               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('paket-wisata') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
-               wire:navigate 
+            <a target="_blank" href="https://serambiujungkulon.com/" 
+               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 " 
                @click="mobileMenuOpen = false">
-                Paket Wisata
+                Pariwisata
             </a>
             <a href="{{ route('artikel') }}" 
                class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('artikel') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 

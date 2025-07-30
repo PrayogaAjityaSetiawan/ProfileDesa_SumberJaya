@@ -76,11 +76,10 @@ class ProductResource extends Resource
                     ->icon('heroicon-o-user')
                     ->schema([
                         Forms\Components\TextInput::make('no_wa')
-                            ->label('Nomor WhatsApp')
-                            ->placeholder('Masukkan nomor WhatsApp...')
-                            ->required()
-                            ->maxLength(255)
-                            ->prefixIcon('heroicon-o-phone')
+                            ->label('Link WhatsApp')
+                            ->placeholder('https://wa.me/62...')
+                            ->url()
+                            ->nullable(),
                     ])
                     ->columns(1)
                     ->collapsible(),

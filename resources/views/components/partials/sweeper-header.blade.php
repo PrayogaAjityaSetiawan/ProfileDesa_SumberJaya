@@ -52,7 +52,7 @@
                 @if($link)
                     <div class="overflow-hidden md:hidden block px-4 py-2 rounded-full ">
                     <a href="{{ $link }}" wire:navigate 
-                       class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 w-fit text-sm sm:text-base group">
+                       class="inline-flex items-center gap-2 text-[#054573] w-fit text-sm sm:text-base group">
                         <span class="font-bold">{{ $linkText ?? 'Lihat Semua' }}</span>
                         <svg class="w-5 h-5 font-bold transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

@@ -1,4 +1,4 @@
-<div>
+<div class="selection:bg-[#05426F] selection:text-white">
     {{-- Hero Section --}} 
     <x-sections.hero :section="$section" />
     {{-- About Section --}}

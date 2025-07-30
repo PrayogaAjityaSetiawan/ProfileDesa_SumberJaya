@@ -5,9 +5,6 @@
                             <img class="h-full object-cover w-full" src="{{ asset('storage/' . $paketWisata->gambar_paket) }}" alt="{{ $paketWisata->nama_paket }}">
                         </div>
                         <div class="absolute  inset-0 bg-gradient-to-t md:bg-gradient-to-l from-blue-100 via-blue-100/50  to-transparent"></div>
-                        <div class="absolute hidden group-hover:block opacity-0 group-hover:opacity-100 transition-all ease-in duration-300 z-10  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <button class="bg-[#053D69] text-white font-bold py-2 px-4 rounded text-sm">Booking Sekarang</button>
-                        </div>
                     </div>
                     <div class="p-6 flex flex-col justify-center gap-6">
                         <h1 class="text-lg md:text-2xl font-bold text-gray-800">{{ $paketWisata->nama_paket }}</h1>
@@ -25,9 +22,6 @@
                     <div class="relative  order-first md:order-last aspect-[16/9] ">
                         <img class=" h-full object-cover w-full" src="{{ asset('storage/' . $paketWisata->gambar_paket) }}" alt="{{ $paketWisata->nama_paket }}">
                         <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-blue-100 via-blue-100/50 to-transparent"></div>
-                        <div class="absolute hidden group-hover:block opacity-0 group-hover:opacity-100 transition-all ease-in duration-300 z-10  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <button class="bg-[#053D69] text-white font-bold py-2 px-4 rounded text-sm">Booking Sekarang</button>
-                        </div>
                     </div>
                 @endif
             </div>

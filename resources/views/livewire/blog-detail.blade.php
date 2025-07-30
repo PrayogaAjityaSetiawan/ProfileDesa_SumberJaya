@@ -1,5 +1,5 @@
-<article class="md:w-[80%] 2xl:w-[70%] px-4 mx-auto pt-30">
-    <!-- Breadcrumb Navigation -->
+<article class="md:w-[80%] 2xl:w-[70%] px-4 mx-auto pt-30 selection:bg-[#05426F] selection:text-white">
+    <!-- Breadcrumb  -->
     <nav class="mb-4 md:mb-8" aria-label="Breadcrumb">
         <ol class="flex items-center space-x-2 text-xs md:text-sm text-gray-500">
             <li>
@@ -27,19 +27,17 @@
             </li>
         </ol>
     </nav>
-
-    <!-- Article Header -->
     <header class="mb-6 md:mb-8">
 
-        <!-- Article Title -->
+        <!-- Artikel Judul -->
         <h1 class="text-xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4 md:mb-6">
             {{ $article->title }}
         </h1>
 
-        <!-- Article Meta Information -->
+        <!-- Artikel Meta -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 md:gap-4 pb-4 md:pb-6 border-b border-gray-200">
             <div class="flex items-center space-x-3 md:space-x-4">
-                <!-- Author -->
+                <!-- Penulis -->
                 <div class="flex items-center">
                     <div class="bg-gray-300 rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center mr-2 md:mr-3">
                         <svg class="w-4 h-4 md:w-5 md:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,7 +50,7 @@
                     </div>
                 </div>
 
-                <!-- Date -->
+                <!-- Tanggal Artikel -->
                 <div class="flex items-center text-xs md:text-sm text-gray-600">
                     <svg class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -61,7 +59,7 @@
                         {{ \Carbon\Carbon::parse($article->created_at)->format('d M Y') }}
                     </time>
                     <span class="mx-1 md:mx-2">•</span>
-                    <!-- Category Badge -->
+                    <!-- kategori Badge -->
                     @if($article->category_name)
                         <div class="flex items-center gap-2">
                             <span class="text-xs md:text-sm">Tag:</span>
@@ -75,21 +73,9 @@
                     @endif
                 </div>
             </div>
-            {{-- <!-- Category Badge -->
-        @if($article->category_name)
-            <div class="flex items-center gap-2">
-                <span class="text-xs md:text-sm">Tag:</span>
-                <span class="inline-flex items-center px-2 md:px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-                    </svg>
-                    {{ $article->category_name }}
-                </span>
-            </div>
-        @endif --}}
     </header>
 
-    <!-- Featured Image -->
+    <!-- Artikel Gambar -->
     @if($article->image)
         <div class="mb-6 md:mb-8 rounded-2xl overflow-hidden">
             <img class="w-full h-48 md:h-64 lg:h-80 xl:h-96 object-cover" 
@@ -99,14 +85,14 @@
         </div>
     @endif
 
-    <!-- Article Content -->
+    <!-- Artikel Konten -->
     <div class="mb-8 md:mb-12">
         <div class="prose prose-sm md:prose-base 2xl:prose-lg max-w-none mx-auto text-gray-800 leading-relaxed text-justify">
             {!! $article->content !!}
         </div>
     </div>
 
-    <!-- Latest Articles Section -->
+    <!-- Artikel Terbaru -->
     @if(isset($latestArticles) && count($latestArticles) > 0)
     <section class="mb-8 md:mb-12">
         <div class="border-t border-gray-200 pt-8 md:pt-12">

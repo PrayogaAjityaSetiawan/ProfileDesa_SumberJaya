@@ -1,5 +1,5 @@
 
-<footer class="rounded-t-2xl bg-gradient-to-br from-[#053D69] via-[#064B7A] to-[#0A5A8A] text-white w-full mt-20 relative overflow-hidden ">
+<footer class=" bg-gradient-to-br from-[#053D69] via-[#064B7A] to-[#0A5A8A] text-white w-full mt-20 relative overflow-hidden ">
     <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-48 translate-x-48"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-32 -translate-x-32"></div>
@@ -19,8 +19,7 @@
                 <p class="text-white/70 text-sm 2xl:text-base leading-relaxed">
                     Temukan keindahan alam yang memukau dan pengalaman tak terlupakan di destinasi wisata terbaik Indonesia.
                 </p>
-                
-                
+            
             </div>
             
             <div class="w-full lg:w-3/5 flex flex-col md:flex-row gap-8 lg:gap-12">
@@ -43,7 +42,7 @@
                                 <svg class="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
-                                Tentang Kami
+                                Profil Desa
                             </a>
                         </li>
                         <li>
@@ -59,7 +58,7 @@
                                 <svg class="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
-                                Paket Wisata
+                                Pariwisata
                             </a>
                         </li>
                         <li>
@@ -71,11 +70,11 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('artikel') }}" class="text-white/80 hover:text-white hover:translate-x-2 transition-all duration-300 text-sm 2xl:text-base  flex items-center group">
+                            <a href="{{ route('galeri') }}" class="text-white/80 hover:text-white hover:translate-x-2 transition-all duration-300 text-sm 2xl:text-base  flex items-center group">
                                 <svg class="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
-                                Kontak
+                                Galeri
                             </a>
                         </li>
                     </ul>

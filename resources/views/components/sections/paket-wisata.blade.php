@@ -1,8 +1,8 @@
 <section class="px-4 md:px-0 md:w-[80%] 2xl:w-[70%] mx-auto mb-20 ">
     <x-header-section 
-        title="Paket Wisata" 
+        title="Destinasi Wisata" 
         description="Berikut ini paket wisata serambi ujung kulon yang akan membuat anda merasakan pengalaman baru" 
-        link="{{ route('paket-wisata') }}" 
+        link="https://serambiujungkulon.com/" 
         linkText="lihat semua" 
     />
         @if ($paketWisatas->isEmpty())
@@ -11,7 +11,7 @@
             </div>
         @else
         <x-sweeper-header
-            link="{{ route('paket-wisata') }}"
+            link="https://serambiujungkulon.com/"
             linkText="lihat semua"
             swiperClass="wisata-swiper"
             slidesPerView="1"

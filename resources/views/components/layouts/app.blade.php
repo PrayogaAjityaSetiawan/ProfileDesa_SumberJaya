@@ -5,12 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ $title ?? 'Page Title' }} | Desa SumberJaya</title>
         <link rel="icon" href="{{ asset('favicon-32x32.png') }}">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
         @livewireStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
             [x-cloak] 
             { display: none !important; }
         </style>
+      {{-- DataTables CSS --}}
+
+
     </head>
     <body id="body">
         <x-navbar/>
@@ -62,11 +68,6 @@
         <x-footer/>
         @livewireScripts
         @livewireScriptConfig 
-        {{-- <script src="https://unpkg.com/split-type"></script> --}}
-        <!-- GSAP Core -->
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> --}}
-        <!-- GSAP ScrollTrigger Plugin -->
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>    --}}
-        {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
+        @stack('scripts') 
     </body>
 </html>

@@ -1,4 +1,4 @@
-<div class="md:w-[80%] 2xl:w-[70%] px-4 mx-auto pt-30">
+<div class="md:w-[80%] 2xl:w-[70%] px-4 mx-auto pt-30 selection:bg-[#05426F] selection:text-white">
     <div class="flex items-center space-x-2 text-sm mb-3">
         <a href="{{ route('homepage') }}" wire:navigate class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 cursor-pointer transition-colors">
             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="w-full flex flex-col md:flex-row  items-start gap-5">
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 ">
             <img class=" rounded-2xl bg-center bg-cover" src="{{ asset('storage/' . $product->gambar) }}" alt="">
         </div>
         <div class="md:w-1/2 flex flex-col gap-3">
@@ -44,12 +44,13 @@
             </iframe>
             <div class="flex flex-row gap-3">
                 <div class="w-1/2 flex flex-col gap-2">
-                    <a class=" bg-green-600 text-white font-bold py-2 px-4  text-sm" href="">Chat Whatsapp</a>
-                    <a class="bg-blue-600 text-white font-bold py-2 px-4  text-sm" href="">Shopee</a>
-                </div>
-                <div class="w-1/2 flex flex-col gap-2">
-                    <a class="bg-blue-600 text-white font-bold py-2 px-4  text-sm" href="">Tokopedia</a>
-                    <a class="bg-blue-600 text-white font-bold py-2 px-4  text-sm" href="">Tiktok</a>
+                    {{-- Tombol WhatsApp --}}
+                    @if ($product->no_wa)
+                        <a href="{{ $product->no_wa }}" target="_blank"
+                            class="inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+                            Hubungi via WhatsApp
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

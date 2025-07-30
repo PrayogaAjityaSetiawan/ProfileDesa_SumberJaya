@@ -95,7 +95,6 @@ function initAllSwipers() {
     swipers.forEach((el) => {
         if (!el.swiper) {
             const slidesPerView = parseInt(el.getAttribute('data-slides-per-view') || 1);
-            console.log('Swiper Init:', { el, slidesPerView });
             new Swiper(el, {
                 loop: false,
                 spaceBetween: 16,
