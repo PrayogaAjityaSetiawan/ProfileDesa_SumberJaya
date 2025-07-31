@@ -80,6 +80,10 @@ class ProductResource extends Resource
                             ->placeholder('https://wa.me/62...')
                             ->url()
                             ->nullable(),
+                        Forms\Components\TextInput::make('link_video')
+                            ->label('Link Video (YouTube)')
+                            ->required()
+                            ->url(),
                     ])
                     ->columns(1)
                     ->collapsible(),

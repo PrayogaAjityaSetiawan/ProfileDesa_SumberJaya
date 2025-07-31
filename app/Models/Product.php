@@ -13,6 +13,7 @@ class Product extends Model
         'harga',
         'gambar',
         'no_wa',
+        'link_video',
         'slug'
     ];
 }

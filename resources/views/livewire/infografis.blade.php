@@ -98,7 +98,7 @@
 <div class="bg-white border border-gray-200 rounded-xl p-5 ">
     <div>
         <h2 class="text-2xl font-bold text-gray-800 text-start">
-            Data Agama Penduduk
+            pendapatan desa
         </h2>
         <p class="text-gray-600 text-sm mb-4">Distribusi penduduk berdasarkan agama</p>
     </div>
@@ -165,6 +165,7 @@
 
     let kelompokUmurChartInstance;
     let pendidikanChartInstance;
+    let agamaChartInstance;
     let dataTableInstance;
 
     function renderCharts() {
@@ -362,24 +363,24 @@
                 }
             }
         });
+
     }
 
     function initDataTable() {
 
         const table = $('#tablePekerjaan');
 
-        // Hancurkan jika sudah ada
-        // if ($.fn.DataTable.isDataTable(table)) {
-        //     table.DataTable().destroy();
-        // }
-
         // Inisialisasi ulang
         dataTableInstance = table.DataTable({
+            responsive: true,
+            order: [0, 'asc'],
+
             pageLength: 20,
             lengthMenu: [5, 10, 25, 50],
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json'
             }
+
         });
     }
 

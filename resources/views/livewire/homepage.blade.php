@@ -9,6 +9,8 @@
     <x-sections.product :products="$products" />
     {{-- Paket Wisata --}}
     <x-sections.paket-wisata :paketWisatas="$paketWisatas" />
+    {{-- Galeri --}}
+    <x-sections.galeri :galeris="$galeris" />
     {{-- Artikel --}}
     <x-sections.article :articles="$articles" />
 </div>

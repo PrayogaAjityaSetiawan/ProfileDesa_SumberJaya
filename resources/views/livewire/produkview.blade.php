@@ -3,7 +3,7 @@
         <div class="text-center mt-5 mb-8">
             <h1 class="text-xl md:text-3xl font-bold text-gray-800">Produk UMKM Sumberjaya</h1>
             <div class="w-full md:w-1/2 mt-4 text-sm md:text-base text-gray-600 mx-auto">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam perferendis ea dicta deserunt autem ipsa! Repellat accusantium ducimus, minus nam consequuntur.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam perferendis ea dicta deserunt autem ipsa! Repellat accusantium ducimus</p>
             </div>
         </div>
         <div class="space-y-8">
@@ -24,10 +24,12 @@
                         </div>
                         
                         <div class="flex flex-col justify-center gap-4 p-6 bg-white">
-                            <h1 class="text-lg capitalize md:text-2xl font-bold text-gray-800 line-clamp-2">{{ $product->nama }}</h1>
-                            <span class="text-base md:text-lg font-semibold text-green-600">
-                                Rp {{ number_format($product->harga, 0, ',', '.') }}
-                            </span>
+                            <div class="flex justify-between items-center gap-2">
+                                <h1 class="text-lg capitalize md:text-2xl font-bold text-gray-800 line-clamp-2">{{ $product->nama }}</h1>
+                                <span class="text-base md:text-lg font-semibold text-green-600">
+                                    Rp {{ number_format($product->harga, 0, ',', '.') }}
+                                </span>
+                            </div>
                             <div class="text-sm md:text-base text-gray-600 leading-relaxed line-clamp-3">
                                 <p>{!! str($product->deskripsi)->sanitizeHtml() !!}</p>
                             </div>
@@ -35,10 +37,12 @@
                         </div>
                     @else
                         <div class="p-6 flex flex-col justify-center gap-4 bg-white">
-                            <h1 class="text-lg capitalize md:text-2xl font-bold text-gray-800 line-clamp-2">{{ $product->nama }}</h1>
-                            <span class="text-base md:text-lg font-semibold text-green-600">
-                                Rp {{ number_format($product->harga, 0, ',', '.') }}
-                            </span>
+                            <div class="flex justify-between items-center gap-2">
+                                <h1 class="text-lg capitalize md:text-2xl font-bold text-gray-800 line-clamp-2">{{ $product->nama }}</h1>
+                                <span class="text-base md:text-lg font-semibold text-green-600">
+                                    Rp {{ number_format($product->harga, 0, ',', '.') }}
+                                </span>
+                            </div>
                             <div class="text-sm md:text-base text-gray-600 leading-relaxed line-clamp-3">
                                 <p>{!! str($product->deskripsi)->sanitizeHtml() !!}</p>
                             </div>
@@ -60,6 +64,10 @@
                     @endif
                 </div>
             @endforeach
+
+            <div class="mt-4">
+    {{ $products->links() }}
+</div>
         </div>
         @if(count($products) == 0)
         <div class="text-center py-16">

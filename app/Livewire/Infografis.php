@@ -17,8 +17,6 @@ class Infografis extends Component
         $this->infgrafis = InfografisModel::latest()->first() ?? null;
 
         
-
-        
         return view('livewire.infografis' ,[
             'infografis' => $this->infgrafis
         ]);

@@ -14,7 +14,7 @@
                 {{ $article->title }}
             </h3>
             
-            <div  class="block md:hidden md:group-hover:block text-sm 2xl:text-base line-clamp-3 mb-4">
+            <div  class="block md:hidden md:group-hover:block text-[10px] 2xl:text-base line-clamp-3 mb-4">
                 <span>
                     {{ \Illuminate\Support\Str::words(strip_tags($article->content), 5, '...') }}
                 </span>

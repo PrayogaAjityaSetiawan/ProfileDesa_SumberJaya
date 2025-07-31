@@ -183,6 +183,31 @@ class InfografisResource extends Resource
                         ->collapsible(),
                 ])
                 ->collapsible(),
+
+                Section::make('pendapatan')
+                ->description('pendapatan desa')
+                ->schema([
+                    Repeater::make('pendapatan')
+                        ->label('pendapatan')
+                        ->schema([
+                            TextInput::make('sumber')
+                                ->label('pendapatan')
+                                ->required()
+                                ->placeholder('Contoh: Pendapatan Usaha, Pendapatan Lainnya'),
+                            TextInput::make('jumlah')
+                                ->numeric()
+                                ->label('jumlah pendapatan')
+                                ->required()
+                                ->minValue(0)
+                                ->placeholder('0'),
+                        ])
+                        ->columns(3)
+                        ->defaultItems(1)
+                        ->addActionLabel('Tambah pendapatan')
+                        ->reorderableWithButtons()
+                        ->collapsible(),
+                ])
+                ->collapsible(),
         ]);
     }
 

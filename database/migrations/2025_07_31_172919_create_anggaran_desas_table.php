@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('anggaran_desas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('slug');
-            $table->text('deskripsi');
-            $table->integer('harga');
-            $table->string('gambar');
-            $table->string('no_wa');
-            $table->text('link_video')->nullable();
+            $table->year('tahun')->unique();
+            $table->json('pendapatan')->nullable(); // array of { sumber, jumlah }
+            $table->json('belanja')->nullable();    // array of { sumber, jumlah }
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('anggaran_desas');
     }
 };
