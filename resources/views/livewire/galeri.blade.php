@@ -1,7 +1,10 @@
 <div class="md:w-[80%] 2xl:w-[70%] mx-auto px-4 sm:px-6 lg:px-8 mt-30 selection:bg-[#05426F] selection:text-white">
-    <h1 class="text-2xl font-bold mb-6">Galeri Desa</h1>
-    <p class="mb-8 text-gray-600">Dapatkan informasi terkini dan artikel menarik seputar desa</p>
-    
+    <div class="text-center mb-12">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl  font-bold text-gray-800 mb-4 capitalize">galeri SumberJaya</h1>
+        <p class="text-gray-600 text-xs sm:text-sm md:text-base 2xl:text-lg max-w-2xl mx-auto">
+            Dokumentasi Kegiatan Desa Sumberjaya
+        </p>
+    </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6">
         @if (isset($galeris) && $galeris->count() > 0)
         
@@ -14,10 +17,8 @@
                         alt="{{ $item->judul }}"
                     >
                     
-                    <!-- Subtle overlay on hover -->
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>
                     
-                    <!-- Optional: Image title overlay -->
                     <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <h3 class="text-white font-medium text-sm truncate">{{ $item->judul }}</h3>
                     </div>

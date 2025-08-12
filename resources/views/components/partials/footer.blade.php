@@ -18,10 +18,8 @@
                 </p>
                 <p class="text-white/70 text-sm 2xl:text-base leading-relaxed">
                     Temukan keindahan alam yang memukau dan pengalaman tak terlupakan di destinasi wisata terbaik Indonesia.
-                </p>
-            
-            </div>
-            
+                </p>           
+            </div>            
             <div class="w-full lg:w-3/5 flex flex-col md:flex-row gap-8 lg:gap-12">
                 <div class="flex-1">
                     <h3 class="text-xl font-bold mb-6 text-white relative">
@@ -54,7 +52,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('artikel') }}" class="text-white/80 hover:text-white hover:translate-x-2 transition-all duration-300 text-sm 2xl:text-base  flex items-center group">
+                            <a target="_blank" href="https://serambiujungkulon.com/" class="text-white/80 hover:text-white hover:translate-x-2 transition-all duration-300 text-sm 2xl:text-base  flex items-center group">
                                 <svg class="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
@@ -78,8 +76,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-                
+                </div>                
                 <div class="flex-1">
                     <h3 class="text-xl font-bold mb-6 text-white relative">
                         Kontak Kami
@@ -95,10 +92,11 @@
                             </div>
                             <div>
                                 <p class="text-white/90 font-semiboldtext-sm 2xl:text-base mb-1">Alamat</p>
-                                <p class="text-white/80 text-sm 2xl:text-base  leading-relaxed">{{ $setting->alamat }}</p>
+                                <a href="https://maps.app.goo.gl/NgNfqYQTgeeHjQHb6" target="_blank">
+                                    <p class="text-white/80 text-sm 2xl:text-base  leading-relaxed">{{ $setting->alamat }}</p>
+                                </a>
                             </div>
-                        </div>
-                        
+                        </div>                        
                         <div class="flex items-start gap-3">
                             <div class="w-8 h-8 2xl:w-10 2xl:h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-4 h-4 2xl:w-5 2xl:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,12 +137,12 @@
                 <div class="flex items-center gap-6">
                     <a href="#" class="text-white/70 hover:text-white transition-colors duration-200 flex items-center gap-2">
                         <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
-                        KKN 2025
+                        KKN UBL 2025
                     </a>
-                    <a href="#" class="text-white/70 hover:text-white transition-colors duration-200 flex items-center gap-2">
+                    {{-- <a href="#" class="text-white/70 hover:text-white transition-colors duration-200 flex items-center gap-2">
                         <span class="w-2 h-2 bg-green-400 rounded-full"></span>
                         Universitas Budi Luhur
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

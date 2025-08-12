@@ -3,13 +3,13 @@
     <div class="bg-white rounded-2xl overflow-hidden">
         <div class="flex flex-col lg:flex-row">
             <div class="w-full lg:w-1/2 relative">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9432177321555!2d105.5870879!3d-6.6539605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e43bb58a837200b%3A0xb9de9fd7a2c83232!2sSaung%20Legon!5e0!3m2!1sid!2sid!4v1748776421171!5m2!1sid!2sid"  
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.730208645863!2d105.58430599982354!3d-6.656733945741841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e43baa52294fd11%3A0xc5448ce9197c70f2!2sKantor%20Desa%20Sumberjaya!5e0!3m2!1sid!2sid!4v1754996993819!5m2!1sid!2sid" 
                         class="w-full h-64 sm:h-80 md:h-96 lg:h-full lg:min-h-[500px]"
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    </iframe>
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/10 lg:to-white/20 pointer-events-none"></div>
             </div>
             <div class="flex flex-col justify-center gap-6 w-full lg:w-1/2 md:p-8 lg:p-12">

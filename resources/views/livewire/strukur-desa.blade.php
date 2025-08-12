@@ -1,4 +1,10 @@
 <section class="px-4 md:px-0 md:w-[80%] 2xl:w-[70%] mt-30 md:mx-auto selection:bg-[#05426F] selection:text-white">
+    <div class="flex flex-col text-center gap-2 mx-auto mb-8">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl  font-bold text-gray-800">Visi dan Misi</h1>
+        <div class="w-full text-sm md:text-base text-gray-600 md:w-1/2 mx-auto">
+            <p>Visi dan misi Desa Sumberjaya</p>
+        </div>
+    </div>
     <!-- Visi Misi Section -->
     @if(isset($visiMisi) && $visiMisi)
         <div class="mb-20">        

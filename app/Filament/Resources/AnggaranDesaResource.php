@@ -18,6 +18,7 @@ class AnggaranDesaResource extends Resource
     protected static ?string $model = AnggaranDesa::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Keuangan Desa';
 
     public static function form(Form $form): Form
     {
@@ -48,7 +49,8 @@ class AnggaranDesaResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('tahun')
+                    ->label('Tahun'),
             ])
             ->filters([
                 //

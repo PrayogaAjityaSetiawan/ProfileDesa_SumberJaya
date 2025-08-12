@@ -3,9 +3,9 @@
     <div class="relative overflow-hidden">
         @if (isset($section->gambar) && !empty($section->gambar))      
             <img class="w-full rounded-b-2xl h-screen object-cover" 
-                 src="{{ asset('storage/' . $section->gambar) }}" 
-                 alt="Cover"
-                 onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-800');" />
+                src="{{ asset('storage/' . $section->gambar) }}" 
+                alt="Cover"
+                onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-800');" />
         @else
             <div class="w-full rounded-b-2xl h-screen bg-gradient-to-br from-gray-800 to-gray-900"></div>
         @endif
@@ -31,9 +31,6 @@
                 <path d="M8 15l4 4" />
             </svg>
         </div>
-        
-        {{-- <div class="absolute rounded-b-2xl top-0 left-0 w-full h-full bg-[#053D69] opacity-50"></div> --}}
-        {{-- <div class="absolute bg-gradient-to-b from-gray-900 via-gray-900/50 to-transparent inset-0"></div>             --}}
         <div class="absolute bg-black opacity-80 inset-0"></div>
     </div>
 </section>

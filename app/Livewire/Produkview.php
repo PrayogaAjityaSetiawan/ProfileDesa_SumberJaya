@@ -8,7 +8,7 @@ use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 
 
-#[Title('Produk')]
+#[Title('Produk UMKM')]
 class Produkview extends Component
 {
     use WithPagination;

@@ -67,11 +67,11 @@
         <div class="hidden md:flex items-center  text-md font-medium">
             <a href="{{ route('homepage') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('homepage') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 Beranda
                 @if(Route::is('homepage'))
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-purple-400"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
                 @endif
             </a>
 
@@ -80,7 +80,7 @@
                 <button 
                     @click="open = !open" 
                     class="flex items-center justify-between px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
-                    :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
+                    :class="isScrolled ? 'text-white' : 'text-white hover:text-gray-200'"
                 >
                     Profil Desa
                     <svg 
@@ -100,19 +100,29 @@
                     x-cloak                   
                     class="absolute top-full left-0 text-sm w-52 bg-white/95 backdrop-blur-lg shadow-xl rounded-lg mt-2 z-50 overflow-hidden border border-gray-200/50"
                 >
-                    <a href="{{ route('sejarah') }}" 
-                       class="block px-4 py-3 hover:bg-gray-50 hover:scale-105 transition-all duration-300 {{ Route::is('sejarah') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700' }}" 
+                    <a href="{{ route('tentang-desa') }}" 
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300 {{ Route::is('tentang-desa') ? 'bg-[#054573] font-semibold ' : 'text-gray-700' }}" 
                        wire:navigate>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
-                            Sejarah
+                            Tentang Desa
+                        </div>
+                    </a>
+                    <a href="{{ route('sejarah') }}" 
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300 {{ Route::is('sejarah') ? 'bg-[#054573] font-semibold ' : 'text-gray-700' }}" 
+                       wire:navigate>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Sejarah Desa
                         </div>
                     </a>
 
                     <a href="{{ route('struktur-desa') }}" 
-                       class="block px-4 py-3 hover:bg-gray-50 hover:scale-105 transition-all duration-300  {{ Route::is('struktur-desa') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700' }}" 
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300  {{ Route::is('struktur-desa') ? 'font-semibold bg-[#054573]' : 'text-gray-700' }}" 
                        wire:navigate>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +133,7 @@
                     </a>
 
                     <a href="{{ route('infografis') }}" 
-                       class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300 {{ Route::is('infografis') ? 'font-semibold bg-[#054573]' : 'text-gray-700' }}">
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
@@ -132,20 +142,26 @@
                         </div>
                     </a>
                     <a href="{{ route('keuangan') }}" 
-                       class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300 {{ Route::is('keuangan') ? 'font-semibold bg-[#054573]' : 'text-gray-700' }}">
                         <div class="flex items-center">
-                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                            </svg>
+                            <svg class="w-4 h-4 mr-3 text-gray-400" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M176 176C176 211.3 147.3 240 112 240L112 400C147.3 400 176 428.7 176 464L464 464C464 428.7 492.7 400 528 400L528 240C492.7 240 464 211.3 464 176L176 176zM64 192C64 156.7 92.7 128 128 128L512 128C547.3 128 576 156.7 576 192L576 448C576 483.3 547.3 512 512 512L128 512C92.7 512 64 483.3 64 448L64 192zM320 208C381.9 208 432 258.1 432 320C432 381.9 381.9 432 320 432C258.1 432 208 381.9 208 320C208 258.1 258.1 208 320 208zM304 252C293 252 284 261 284 272C284 281.7 290.9 289.7 300 291.6L300 340L296 340C285 340 276 349 276 360C276 371 285 380 296 380L344 380C355 380 364 371 364 360C364 349 355 340 344 340L340 340L340 272C340 261 331 252 320 252L304 252z"/></svg>
                             Keuangan
                         </div>
                     </a>
                     <a href="{{ route('sarana-prasarana') }}" 
                        wire:navigate
-                       class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-300 ">
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300 {{ Route::is('sarana-prasarana') ? 'font-semibold bg-[#054573]' : 'text-gray-700' }} ">
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-3 text-gray-400"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-building"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" /><path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" /><path d="M14 16l1 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /></svg>
                             Sarana & Prasarana
+                        </div>
+                    </a>
+                    <a href="{{ route('lembaga') }}" 
+                       wire:navigate
+                       class="block px-4 py-3 hover:scale-105 transition-all duration-300 {{ Route::is('lembaga') ? 'font-semibold bg-[#054573]' : 'text-gray-700' }} ">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-3 text-gray-400"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-building"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" /><path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" /><path d="M14 16l1 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /></svg>
+                            Lembaga
                         </div>
                     </a>
                 </div>
@@ -153,38 +169,38 @@
 
             <a href="{{ route('produk') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('produk') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white ' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 UMKM
                 @if(Route::is('produk'))
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
                 @endif
             </a>
 
             <a target="_blank" href="https://serambiujungkulon.com/" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105"
-               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white' : 'text-white hover:text-gray-200'"
                >
                 Pariwisata
             </a>
 
             <a href="{{ route('artikel') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('artikel') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 Artikel
                 @if(Route::is('artikel'))
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
                 @endif
             </a>
 
             <a href="{{ route('galeri') }}" 
                class="relative px-3 py-2 transition-all duration-300 hover:scale-105 {{ Route::is('galeri') ? 'text-blue-400 font-semibold' : '' }}"
-               :class="isScrolled ? 'text-white hover:text-blue-600' : 'text-white hover:text-gray-200'"
+               :class="isScrolled ? 'text-white' : 'text-white hover:text-gray-200'"
                wire:navigate>
                 Galeri
                 @if(Route::is('galeri'))
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
                 @endif
             </a>
         </div>
@@ -285,27 +301,27 @@
             </div>
             
             <a href="{{ route('produk') }}" 
-               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('produk') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
-               wire:navigate 
+                class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('produk') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+                wire:navigate 
                @click="mobileMenuOpen = false">
                 Produk
             </a>
             <a target="_blank" href="https://serambiujungkulon.com/" 
-               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 " 
-               @click="mobileMenuOpen = false">
+                class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 " 
+                @click="mobileMenuOpen = false">
                 Pariwisata
             </a>
             <a href="{{ route('artikel') }}" 
-               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('artikel') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
-               wire:navigate 
-               @click="mobileMenuOpen = false">
+                class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('artikel') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+                wire:navigate 
+                @click="mobileMenuOpen = false">
                 Artikel
             </a>
-            <a href="{{ route('artikel') }}" 
-               class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('kontak') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
+            <a href="{{ route('galeri') }}" 
+                class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 {{ Route::is('kontak') ? 'text-blue-600 font-semibold bg-blue-50' : '' }}" 
                wire:navigate 
                @click="mobileMenuOpen = false">
-                Kontak
+                Galeri
             </a>
         </div>
     </div>

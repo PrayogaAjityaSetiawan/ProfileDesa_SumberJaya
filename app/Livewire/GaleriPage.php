@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 
 
-#[Title('Galeri - Desa')]
+#[Title('Galeri')]
 class GaleriPage extends Component
 {
     use WithPagination;
